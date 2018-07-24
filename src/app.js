@@ -1,10 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
+import configureStore from './configureStore'
+import { Provider } from 'react-redux'
+import App from './components/App'
+const store = configureStore()
 
-class App extends React.Component {
-  render() {
-    return <h1>Hello World!!</h1>
-  }
-}
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
 
-render(<App />, document.getElementById('app'))
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+)
+
+unsubscribe()
