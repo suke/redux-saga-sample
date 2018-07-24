@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { increment, decrement } from '../modules/Counter'
+import { getRepository } from '../modules/Github'
 import Counter from '../components/Counter'
 
 const mapStateToProps = state => {
@@ -11,7 +12,8 @@ const mapStateToProps = state => {
 const mapDispatchToPros = dispatch => {
   return {
     increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement())
+    decrement: () => dispatch(decrement()),
+    getRepository: () => dispatch(getRepository())
   }
 }
 

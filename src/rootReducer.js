@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import counterReducer from './modules/Counter'
+import githubReducer from './modules/Github'
 
 const reducer = combineReducers({
-  counterReducer
+  counterReducer,
+  githubReducer
 })
 
 export default reducer

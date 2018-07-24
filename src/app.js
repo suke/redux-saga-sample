@@ -1,11 +1,14 @@
+import 'babel-polyfill'
+
 import React from 'react'
 import { render } from 'react-dom'
 import configureStore from './configureStore'
 import { Provider } from 'react-redux'
 import App from './components/App'
-const store = configureStore()
+import rootSaga from './sagas'
 
-const unsubscribe = store.subscribe(() => console.log(store.getState()))
+const { store, sagaMiddleware } = configureStore()
+sagaMiddleware.run(rootSaga)
 
 render(
   <Provider store={store}>
@@ -13,5 +16,3 @@ render(
   </Provider>,
   document.getElementById('app')
 )
-
-unsubscribe()
