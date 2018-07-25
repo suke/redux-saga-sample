@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from './rootReducer'
 import logger from 'redux-logger'
+import rootSaga from './sagas'
 export const sagaMiddleware = createSagaMiddleware()
 
 export default function configureStore() {
@@ -17,6 +18,7 @@ export default function configureStore() {
       store.replaceReducer(nextRootReducer)
     })
   }
+  sagaMiddleware.run(rootSaga)
 
-  return { store, sagaMiddleware }
+  return store
 }

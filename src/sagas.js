@@ -1,9 +1,10 @@
-import { put, call, takeEvery, all } from 'redux-saga/effects'
+import { put, call, takeEvery, all, fork } from 'redux-saga/effects'
 import * as Api from './Api'
 import { successGetRepository } from './modules/Github'
 
-function* getRepository() {
-  const { result, err } = yield call(Api.getRepository)
+function* getRepository(action) {
+  const { name } = action
+  const { result, err } = yield call(Api.getRepository, name)
   if (result && !err) {
     yield put(successGetRepository(result.data))
   }

@@ -5,10 +5,8 @@ import { render } from 'react-dom'
 import configureStore from './configureStore'
 import { Provider } from 'react-redux'
 import App from './components/App'
-import rootSaga from './sagas'
 
-const { store, sagaMiddleware } = configureStore()
-sagaMiddleware.run(rootSaga)
+const store = configureStore()
 
 render(
   <Provider store={store}>

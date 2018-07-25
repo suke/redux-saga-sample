@@ -12,8 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToPros = dispatch => {
   return {
     increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),
-    getRepository: () => dispatch(getRepository())
+    decrement: () => dispatch(decrement())
   }
 }
 
